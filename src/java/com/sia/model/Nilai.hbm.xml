@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2013 1:51:30 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sia.model.Nilai" table="nilai" catalog="siafinal">
+        <composite-id name="id" class="com.sia.model.NilaiId">
+            <key-property name="kodeMk" type="int">
+                <column name="kodeMK" />
+            </key-property>
+            <key-property name="nim" type="int">
+                <column name="NIM" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="mahasiswa" class="com.sia.model.Mahasiswa" update="false" insert="false" fetch="select">
+            <column name="NIM" not-null="true" />
+        </many-to-one>
+        <many-to-one name="matakuliah" class="com.sia.model.Matakuliah" update="false" insert="false" fetch="select">
+            <column name="kodeMK" not-null="true" />
+        </many-to-one>
+        <property name="nilai1" type="java.lang.Integer">
+            <column name="nilai1" />
+        </property>
+        <property name="nilai2" type="java.lang.Integer">
+            <column name="nilai2" />
+        </property>
+        <property name="nilai3" type="java.lang.Integer">
+            <column name="nilai3" />
+        </property>
+        <property name="nilai4" type="java.lang.Integer">
+            <column name="nilai4" />
+        </property>
+        <property name="nilai5" type="java.lang.Integer">
+            <column name="nilai5" />
+        </property>
+    </class>
+</hibernate-mapping>

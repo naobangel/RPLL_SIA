@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2013 1:51:30 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sia.model.Matakuliah" table="matakuliah" catalog="siafinal">
+        <id name="kodeMk" type="int">
+            <column name="KodeMK" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="matakuliah" class="com.sia.model.Matakuliah" fetch="select">
+            <column name="KodeMKPS" />
+        </many-to-one>
+        <property name="namaMk" type="string">
+            <column name="NamaMK" length="50" />
+        </property>
+        <property name="semester" type="java.lang.Integer">
+            <column name="Semester" />
+        </property>
+        <property name="sks" type="java.lang.Integer">
+            <column name="SKS" />
+        </property>
+        <property name="status" type="string">
+            <column name="Status" length="50" />
+        </property>
+        <set name="ambils" inverse="true">
+            <key>
+                <column name="KodeMK" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Ambil" />
+        </set>
+        <set name="waktus" inverse="true">
+            <key>
+                <column name="KodeMK" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Waktu" />
+        </set>
+        <set name="absens" inverse="true">
+            <key>
+                <column name="kodeMK" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Absen" />
+        </set>
+        <set name="ruangs" inverse="true">
+            <key>
+                <column name="KodeMK" />
+            </key>
+            <one-to-many class="com.sia.model.Ruang" />
+        </set>
+        <set name="nilais" inverse="true">
+            <key>
+                <column name="kodeMK" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Nilai" />
+        </set>
+        <set name="mengajars" inverse="true">
+            <key>
+                <column name="KodeMK" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Mengajar" />
+        </set>
+        <set name="aturs" inverse="true">
+            <key>
+                <column name="kodeMK" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Atur" />
+        </set>
+        <set name="matakuliahs" inverse="true">
+            <key>
+                <column name="KodeMKPS" />
+            </key>
+            <one-to-many class="com.sia.model.Matakuliah" />
+        </set>
+    </class>
+</hibernate-mapping>

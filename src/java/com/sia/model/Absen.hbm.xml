@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2013 1:51:30 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sia.model.Absen" table="absen" catalog="siafinal">
+        <composite-id name="id" class="com.sia.model.AbsenId">
+            <key-property name="kodeMk" type="int">
+                <column name="kodeMK" />
+            </key-property>
+            <key-property name="kodeRuang" type="int">
+                <column name="kodeRuang" />
+            </key-property>
+            <key-property name="nim" type="int">
+                <column name="NIM" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="ruang" class="com.sia.model.Ruang" update="false" insert="false" fetch="select">
+            <column name="kodeRuang" not-null="true" />
+        </many-to-one>
+        <many-to-one name="mahasiswa" class="com.sia.model.Mahasiswa" update="false" insert="false" fetch="select">
+            <column name="NIM" not-null="true" />
+        </many-to-one>
+        <many-to-one name="matakuliah" class="com.sia.model.Matakuliah" update="false" insert="false" fetch="select">
+            <column name="kodeMK" not-null="true" />
+        </many-to-one>
+        <property name="jam" type="int">
+            <column name="jam" not-null="true" />
+        </property>
+        <property name="hari" type="int">
+            <column name="hari" not-null="true" />
+        </property>
+        <property name="absen1" type="java.lang.Integer">
+            <column name="absen1" />
+        </property>
+        <property name="absen2" type="java.lang.Integer">
+            <column name="absen2" />
+        </property>
+        <property name="absen3" type="java.lang.Integer">
+            <column name="absen3" />
+        </property>
+        <property name="absen4" type="java.lang.Integer">
+            <column name="absen4" />
+        </property>
+        <property name="absen5" type="java.lang.Integer">
+            <column name="absen5" />
+        </property>
+        <property name="absen6" type="java.lang.Integer">
+            <column name="absen6" />
+        </property>
+        <property name="absen7" type="java.lang.Integer">
+            <column name="absen7" />
+        </property>
+        <property name="absen8" type="java.lang.Integer">
+            <column name="absen8" />
+        </property>
+        <property name="absen9" type="java.lang.Integer">
+            <column name="absen9" />
+        </property>
+        <property name="absen10" type="java.lang.Integer">
+            <column name="absen10" />
+        </property>
+        <property name="absen11" type="java.lang.Integer">
+            <column name="absen11" />
+        </property>
+        <property name="absen12" type="java.lang.Integer">
+            <column name="absen12" />
+        </property>
+        <property name="absen13" type="java.lang.Integer">
+            <column name="absen13" />
+        </property>
+        <property name="absen14" type="java.lang.Integer">
+            <column name="absen14" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2013 1:51:30 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sia.model.Ruang" table="ruang" catalog="siafinal">
+        <id name="kodeRuang" type="int">
+            <column name="KodeRuang" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="matakuliah" class="com.sia.model.Matakuliah" fetch="select">
+            <column name="KodeMK" />
+        </many-to-one>
+        <property name="namaRuang" type="string">
+            <column name="NamaRuang" length="50" />
+        </property>
+        <set name="aturs" inverse="true">
+            <key>
+                <column name="kode Ruang" />
+            </key>
+            <one-to-many class="com.sia.model.Atur" />
+        </set>
+        <set name="absens" inverse="true">
+            <key>
+                <column name="kodeRuang" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Absen" />
+        </set>
+        <set name="waktus" inverse="true">
+            <key>
+                <column name="KodeRuang" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Waktu" />
+        </set>
+        <set name="mengajars" inverse="true">
+            <key>
+                <column name="KodeRuang" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Mengajar" />
+        </set>
+    </class>
+</hibernate-mapping>

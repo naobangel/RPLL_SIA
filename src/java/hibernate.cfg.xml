@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/siafinal?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">root</property>
+    <mapping resource="com/sia/model/Atur.hbm.xml"/>
+    <mapping resource="com/sia/model/Prodi.hbm.xml"/>
+    <mapping resource="com/sia/model/Biaya.hbm.xml"/>
+    <mapping resource="com/sia/model/Absen.hbm.xml"/>
+    <mapping resource="com/sia/model/Mengajar.hbm.xml"/>
+    <mapping resource="com/sia/model/Staff.hbm.xml"/>
+    <mapping resource="com/sia/model/Ambil.hbm.xml"/>
+    <mapping resource="com/sia/model/Mahasiswa.hbm.xml"/>
+    <mapping resource="com/sia/model/Ruang.hbm.xml"/>
+    <mapping resource="com/sia/model/Fakultas.hbm.xml"/>
+    <mapping resource="com/sia/model/Matakuliah.hbm.xml"/>
+    <mapping resource="com/sia/model/Dosen.hbm.xml"/>
+    <mapping resource="com/sia/model/Waktu.hbm.xml"/>
+    <mapping resource="com/sia/model/Biayakhusus.hbm.xml"/>
+    <mapping resource="com/sia/model/Nilai.hbm.xml"/>
+    <mapping resource="com/sia/model/Hakakses.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

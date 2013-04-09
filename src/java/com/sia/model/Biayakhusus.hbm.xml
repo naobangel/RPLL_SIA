@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2013 1:51:30 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sia.model.Biayakhusus" table="biayakhusus" catalog="siafinal">
+        <composite-id name="id" class="com.sia.model.BiayakhususId">
+            <key-property name="kodeProd" type="int">
+                <column name="KodeProd" />
+            </key-property>
+            <key-property name="angkatan" type="int">
+                <column name="Angkatan" />
+            </key-property>
+            <key-property name="kode" type="int">
+                <column name="Kode" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="prodi" class="com.sia.model.Prodi" update="false" insert="false" fetch="select">
+            <column name="KodeProd" not-null="true" />
+        </many-to-one>
+        <property name="desc" type="string">
+            <column name="Desc" length="30" not-null="true" />
+        </property>
+        <property name="biayaKhusus" type="java.lang.Integer">
+            <column name="BiayaKhusus" />
+        </property>
+    </class>
+</hibernate-mapping>

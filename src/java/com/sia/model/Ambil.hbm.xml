@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2013 1:51:30 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sia.model.Ambil" table="ambil" catalog="siafinal">
+        <composite-id name="id" class="com.sia.model.AmbilId">
+            <key-property name="kodeMk" type="int">
+                <column name="KodeMK" />
+            </key-property>
+            <key-property name="nim" type="int">
+                <column name="NIM" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="mahasiswa" class="com.sia.model.Mahasiswa" update="false" insert="false" fetch="select">
+            <column name="NIM" not-null="true" />
+        </many-to-one>
+        <many-to-one name="matakuliah" class="com.sia.model.Matakuliah" update="false" insert="false" fetch="select">
+            <column name="KodeMK" not-null="true" />
+        </many-to-one>
+        <property name="tglAmbil" type="date">
+            <column name="Tgl_Ambil" length="10" not-null="true" />
+        </property>
+        <property name="semesterKe" type="int">
+            <column name="Semester_ke" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

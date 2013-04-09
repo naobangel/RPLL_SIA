@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2013 1:51:30 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sia.model.Mengajar" table="mengajar" catalog="siafinal">
+        <composite-id name="id" class="com.sia.model.MengajarId">
+            <key-property name="nik" type="int">
+                <column name="NIK" />
+            </key-property>
+            <key-property name="kodeMk" type="int">
+                <column name="KodeMK" />
+            </key-property>
+            <key-property name="kodeRuang" type="int">
+                <column name="KodeRuang" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="ruang" class="com.sia.model.Ruang" update="false" insert="false" fetch="select">
+            <column name="KodeRuang" not-null="true" />
+        </many-to-one>
+        <many-to-one name="dosen" class="com.sia.model.Dosen" update="false" insert="false" fetch="select">
+            <column name="NIK" not-null="true" />
+        </many-to-one>
+        <many-to-one name="matakuliah" class="com.sia.model.Matakuliah" update="false" insert="false" fetch="select">
+            <column name="KodeMK" not-null="true" />
+        </many-to-one>
+        <property name="jam" type="time">
+            <column name="Jam" length="8" />
+        </property>
+        <property name="hari" type="date">
+            <column name="Hari" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

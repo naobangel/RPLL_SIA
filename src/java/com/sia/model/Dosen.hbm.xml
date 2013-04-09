@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2013 1:51:30 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sia.model.Dosen" table="dosen" catalog="siafinal">
+        <id name="nik" type="int">
+            <column name="NIK" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="dosen" class="com.sia.model.Dosen" fetch="select">
+            <column name="NIKKadep" />
+        </many-to-one>
+        <property name="nama" type="string">
+            <column name="Nama" length="50" />
+        </property>
+        <property name="password" type="string">
+            <column name="Password" length="50" />
+        </property>
+        <set name="prodis" inverse="false" table="terdiri">
+            <key>
+                <column name="NIK" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.sia.model.Prodi">
+                <column name="KodeProdi" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="aturs" inverse="true">
+            <key>
+                <column name="NIK" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Atur" />
+        </set>
+        <set name="mengajars" inverse="true">
+            <key>
+                <column name="NIK" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Mengajar" />
+        </set>
+        <set name="mahasiswas" inverse="true">
+            <key>
+                <column name="DosenWali" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Mahasiswa" />
+        </set>
+        <set name="dosens" inverse="true">
+            <key>
+                <column name="NIKKadep" />
+            </key>
+            <one-to-many class="com.sia.model.Dosen" />
+        </set>
+    </class>
+</hibernate-mapping>

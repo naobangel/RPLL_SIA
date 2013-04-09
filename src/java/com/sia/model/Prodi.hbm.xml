@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2013 1:51:30 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sia.model.Prodi" table="prodi" catalog="siafinal">
+        <id name="kodeProd" type="int">
+            <column name="KodeProd" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="fakultas" class="com.sia.model.Fakultas" fetch="select">
+            <column name="KodeFak" not-null="true" />
+        </many-to-one>
+        <property name="namaProd" type="string">
+            <column name="NamaProd" length="50" />
+        </property>
+        <set name="biayas" inverse="true">
+            <key>
+                <column name="KodeProd" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Biaya" />
+        </set>
+        <set name="biayakhususes" inverse="true">
+            <key>
+                <column name="KodeProd" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Biayakhusus" />
+        </set>
+        <set name="mahasiswas" inverse="true">
+            <key>
+                <column name="Prodi" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Mahasiswa" />
+        </set>
+        <set name="dosens" inverse="false" table="terdiri">
+            <key>
+                <column name="KodeProdi" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.sia.model.Dosen">
+                <column name="NIK" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

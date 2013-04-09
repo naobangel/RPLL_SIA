@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2013 1:51:30 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sia.model.Mahasiswa" table="mahasiswa" catalog="siafinal">
+        <id name="nim" type="int">
+            <column name="NIM" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="staff" class="com.sia.model.Staff" fetch="select">
+            <column name="BayarKe" />
+        </many-to-one>
+        <many-to-one name="prodi" class="com.sia.model.Prodi" fetch="select">
+            <column name="Prodi" not-null="true" />
+        </many-to-one>
+        <many-to-one name="dosen" class="com.sia.model.Dosen" fetch="select">
+            <column name="DosenWali" not-null="true" />
+        </many-to-one>
+        <property name="namaMhs" type="string">
+            <column name="NamaMhs" length="50" />
+        </property>
+        <property name="tglLahir" type="date">
+            <column name="TglLahir" length="10" />
+        </property>
+        <property name="alamat" type="string">
+            <column name="Alamat" length="50" />
+        </property>
+        <property name="ips" type="java.lang.Double">
+            <column name="IPS" precision="22" scale="0" />
+        </property>
+        <property name="ipk" type="java.lang.Double">
+            <column name="IPK" precision="22" scale="0" />
+        </property>
+        <property name="statusLulus" type="java.lang.Integer">
+            <column name="StatusLulus" />
+        </property>
+        <set name="nilais" inverse="true">
+            <key>
+                <column name="NIM" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Nilai" />
+        </set>
+        <set name="hakakseses" inverse="false" table="akses">
+            <key>
+                <column name="Pengguna" />
+            </key>
+            <many-to-many entity-name="com.sia.model.Hakakses">
+                <column name="NoAkses" />
+            </many-to-many>
+        </set>
+        <set name="absens" inverse="true">
+            <key>
+                <column name="NIM" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Absen" />
+        </set>
+        <set name="ambils" inverse="true">
+            <key>
+                <column name="NIM" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Ambil" />
+        </set>
+    </class>
+</hibernate-mapping>

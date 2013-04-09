@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2013 1:51:30 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sia.model.Hakakses" table="hakakses" catalog="siafinal">
+        <id name="no" type="int">
+            <column name="No" />
+            <generator class="assigned" />
+        </id>
+        <property name="pengguna" type="string">
+            <column name="Pengguna" length="30" />
+        </property>
+        <property name="badanHukum&amp;PerguruanTinggiView" type="java.lang.Integer">
+            <column name="`Badan Hukum &amp; Perguruan Tinggi_view`" />
+        </property>
+        <property name="badanHukum&amp;PerguruanTinggiEdit" type="java.lang.Integer">
+            <column name="`Badan Hukum &amp; Perguruan Tinggi_edit`" />
+        </property>
+        <property name="fakDeptProdiView" type="java.lang.Integer">
+            <column name="Fak_Dept_Prodi_view" />
+        </property>
+        <property name="fakDeptProdiEdit" type="java.lang.Integer">
+            <column name="Fak_Dept_Prodi_edit" />
+        </property>
+        <property name="dosenView" type="java.lang.Integer">
+            <column name="Dosen_view" />
+        </property>
+        <property name="dosenEdit" type="java.lang.Integer">
+            <column name="Dosen_edit" />
+        </property>
+        <property name="mahasiswaAlumniView" type="java.lang.Integer">
+            <column name="Mahasiswa_Alumni_view" />
+        </property>
+        <property name="mahasiswaAlumniEdit" type="java.lang.Integer">
+            <column name="Mahasiswa_Alumni_edit" />
+        </property>
+        <property name="matkulKurikulumView" type="java.lang.Integer">
+            <column name="Matkul_Kurikulum_view" />
+        </property>
+        <property name="matkulKurikulumEdit" type="java.lang.Integer">
+            <column name="Matkul_Kurikulum_edit" />
+        </property>
+        <property name="keuanganView" type="java.lang.Integer">
+            <column name="Keuangan_view" />
+        </property>
+        <property name="keuanganEdit" type="java.lang.Integer">
+            <column name="Keuangan_edit" />
+        </property>
+        <property name="tataUsahaView" type="java.lang.Integer">
+            <column name="TataUsaha_view" />
+        </property>
+        <property name="tataUsahaEdit" type="java.lang.Integer">
+            <column name="TataUsaha_edit" />
+        </property>
+        <set name="mahasiswas" inverse="false" table="akses">
+            <key>
+                <column name="NoAkses" />
+            </key>
+            <many-to-many entity-name="com.sia.model.Mahasiswa">
+                <column name="Pengguna" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>
